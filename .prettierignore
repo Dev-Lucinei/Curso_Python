@@ -1,0 +1,25 @@
+# Dependências
+node_modules/
+.venv/
+venv/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Cache
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+# Git
+.git/
+
+# IDE
+.vscode/
+.idea/
+
+# Outros
+*.min.js
+*.min.css

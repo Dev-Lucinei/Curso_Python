@@ -40,37 +40,90 @@ Uma plataforma de aprendizado interativo para Python, construída com Flask.
 ## Pré-requisitos
 
 *   Python 3.8 ou superior
-*   pip (gerenciador de pacotes Python)
+*   uv (gerenciador de pacotes Python - recomendado) ou pip
+*   Node.js e npm (para Prettier)
 
 ## Instalação
 
+### Instalação Rápida (Recomendada)
+
+```bash
+# Executar script de setup automático
+./setup.sh
+```
+
+### Instalação Manual
+
 1.  Clone o repositório (ou baixe os arquivos do projeto).
-2.  Navegue até o diretório raiz do projeto: `c:\Users\lucin\OneDrive\Dev_Python\Projetos Python\Curso-Interartivo-Python`
-3.  Crie e ative um ambiente virtual (recomendado):
+2.  Navegue até o diretório raiz do projeto
+3.  Instale o uv (se ainda não tiver):
     ```bash
-    python -m venv venv
-    # Windows
-    .\venv\Scripts\activate
-    # macOS/Linux
-    # source venv/bin/activate
+    curl -LsSf https://astral.sh/uv/install.sh | sh
     ```
-4.  Instale as dependências (se você criar um `requirements.txt`):
+4.  Crie e ative um ambiente virtual:
     ```bash
-    pip install Flask flask-cors pytest
-    # Ou, se tiver um requirements.txt:
-    # pip install -r requirements.txt
+    uv venv
+    # Ativar ambiente virtual
+    source .venv/bin/activate  # Linux/macOS
+    .\.venv\Scripts\activate   # Windows
     ```
-    *(Nota: O `setup.py` lista Flask, mas para desenvolvimento direto, instalar explicitamente ou via `requirements.txt` é comum.)*
+5.  Instale as dependências:
+    ```bash
+    uv pip install -r requirements.txt
+    ```
+6.  Instale dependências Node (para formatadores):
+    ```bash
+    npm install
+    ```
 
 ## Execução
 
 Para iniciar a aplicação em modo de desenvolvimento:
 
 ```bash
+# Com uv (recomendado - não precisa ativar venv)
+uv run python projects/run.py
+
+# Ou com venv ativado
 python projects/run.py
+
+# Ou usando Make
+make run
 ```
 
 A aplicação estará disponível em `http://localhost:5000` (ou `http://0.0.0.0:5000`).
+
+## Desenvolvimento
+
+### Formatação de Código
+
+```bash
+# Formatar todo o código
+make format
+
+# Verificar formatação
+make format-check
+
+# Executar linters
+make lint
+
+# Corrigir problemas automaticamente
+make lint-fix
+```
+
+### Testes
+
+```bash
+# Executar todos os testes
+make test
+# ou
+uv run pytest
+
+# Executar com cobertura
+uv run pytest --cov=projects
+```
+
+Para mais informações sobre contribuição, veja [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Documentação da API
 

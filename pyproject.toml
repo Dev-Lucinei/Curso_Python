@@ -1,0 +1,83 @@
+[project]
+name = "curso-interativo-python"
+version = "1.0.0"
+description = "Plataforma de aprendizado interativo de Python"
+requires-python = ">=3.8"
+
+[tool.ruff]
+# Comprimento máximo de linha
+line-length = 120
+
+# Versão do Python
+target-version = "py38"
+
+# Diretórios a ignorar
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "*.pyc",
+    ".pytest_cache",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint]
+# Regras a habilitar
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+
+# Regras a ignorar
+ignore = [
+    "E501",  # line too long (já controlado por line-length)
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+
+# Permitir autofix para todas as regras habilitadas
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.format]
+# Usar aspas duplas
+quote-style = "double"
+
+# Usar indentação com espaços
+indent-style = "space"
+
+# Respeitar magic trailing comma
+skip-magic-trailing-comma = false
+
+# Estilo de fim de linha automático
+line-ending = "auto"
+
+[tool.black]
+line-length = 120
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | venv
+  | __pycache__
+  | \.pytest_cache
+  | build
+  | dist
+)/
+'''
+
+[tool.pytest.ini_options]
+testpaths = ["projects/testes"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"

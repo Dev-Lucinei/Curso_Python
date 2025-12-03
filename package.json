@@ -1,0 +1,28 @@
+{
+  "name": "curso-interativo-python",
+  "version": "1.0.0",
+  "description": "Plataforma de aprendizado interativo de Python",
+  "scripts": {
+    "format": "prettier --write \"projects/**/*.{js,css,html}\"",
+    "format:check": "prettier --check \"projects/**/*.{js,css,html}\"",
+    "format:python": "uv run ruff format projects/",
+    "format:all": "npm run format && npm run format:python",
+    "lint:js": "prettier --check \"projects/**/*.{js,css,html}\"",
+    "lint:python": "uv run ruff check projects/",
+    "lint:all": "npm run lint:js && npm run lint:python",
+    "fix:python": "uv run ruff check --fix projects/",
+    "test": "uv run pytest",
+    "dev": "uv run python projects/run.py"
+  },
+  "devDependencies": {
+    "prettier": "^3.1.0"
+  },
+  "keywords": [
+    "python",
+    "learning",
+    "education",
+    "flask"
+  ],
+  "author": "",
+  "license": "MIT"
+}

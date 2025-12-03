@@ -1,8 +1,14 @@
+let codeEditor; // Variável global para o editor
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Determinar tema inicial
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    const editorTheme = currentTheme === 'dark' ? 'monokai' : 'default';
+    
     // Inicializar o editor CodeMirror
-    const codeEditor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
+    codeEditor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
         mode: 'python',
-        theme: 'monokai',
+        theme: editorTheme,
         lineNumbers: true,
         indentUnit: 4,
         indentWithTabs: false,
@@ -122,3 +128,11 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', resizeEditor);
     setTimeout(resizeEditor, 100); // Pequeno atraso para garantir que o editor foi renderizado
 });
+
+// Função para atualizar o tema do editor (chamada de main.js)
+function updateEditorTheme(theme) {
+    if (codeEditor) {
+        const editorTheme = theme === 'dark' ? 'monokai' : 'default';
+        codeEditor.setOption('theme', editorTheme);
+    }
+}
